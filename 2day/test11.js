@@ -18,5 +18,5 @@ console.log(result);
 outer(three);
 console.log(result);
 
-outer( num => num * 4);
+outer(num => num * 4);
 console.log(result);
