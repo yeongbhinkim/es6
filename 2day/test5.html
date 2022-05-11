@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //두개의 숫자를 더하는 함수정의
+
+        //1) 함수 선언문
+        function add(x, y) {
+            return x + y;
+        }
+
+        //2) 함수 표현식
+        const add2 = function (x, y) {
+            return x + y;
+        }
+        //3) 화살표 함수
+        const add3 = (x, y) => {
+            return x + y;
+        }
+
+        const add4 = (x, y) => x + y;
+
+        console.log(add(10,20));
+        console.log(add2(10,20));
+        console.log(add3(10,20));
+        console.log(add4(10,20));
+
+        
+    </script>
+</body>
+
+</html>
