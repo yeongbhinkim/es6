@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        체크1<input type="checkbox" name="" id="">
+        체크2<input type="checkbox" name="" id="">
+        체크3<input type="checkbox" name="" id="">
+        체크4<input type="checkbox" name="" id="">
+        체크5<input type="checkbox" name="" id="">
+    </form>
+
+    <button id="chk">체크</button>
+    <script>
+        chk.addEventListener('click',e=>{
+            const $inputs = document.querySelectorAll('form input');
+        if([...$inputs].every(ele => ele.checked)){
+                console.log('모두체크됨!');
+        }else{
+            console.log('모두체크되지 않음!');
+        }
+        });
+    </script>
+</body>
+
+</html>
