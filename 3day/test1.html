@@ -19,13 +19,16 @@
 
     <button id="chk">체크</button>
     <script>
-        chk.addEventListener('click',e=>{
-            const $inputs = document.querySelectorAll('form input');
-        if([...$inputs].every(ele => ele.checked)){
+        chk.addEventListener('click', e => {
+            const $inputs = document.querySelectorAll('form input');//유사 배열을 반환
+            //유사배열을 배열로 반환
+            //case1) [...inputs] 선호함
+            //case2) Array.from(inputs) 
+            if ([...$inputs].every(ele => ele.checked)) {
                 console.log('모두체크됨!');
-        }else{
-            console.log('모두체크되지 않음!');
-        }
+            } else {
+                console.log('모두체크되지 않음!');
+            }
         });
     </script>
 </body>
