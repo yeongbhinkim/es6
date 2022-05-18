@@ -32,7 +32,9 @@ console.log('================================');
 // 3) 화살표함수
 const m = x => y => y * x;
 
-console.log(m(2)(3));
+console.log(m(2)(3)); //6
+console.log(m(3)(3)); //9
+console.log(m(4)(3)); //12
 
 const m2 = m(2); //2배수 함수
 const m3 = m(3); //3배수 함수
