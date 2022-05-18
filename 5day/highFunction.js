@@ -33,3 +33,11 @@ console.log('================================');
 const m = x => y => y * x;
 
 console.log(m(2)(3));
+
+const m2 = m(2); //2배수 함수
+const m3 = m(3); //3배수 함수
+const m4 = m(4); //4배수 함수
+
+console.log(m2(3)); //6
+console.log(m3(3)); //9
+console.log(m4(3)); //12
