@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul class="fruits">
+      <li class="item item1">apple</li>
+      <li class="item item2">banana</li>
+      <li class="item item3">orange</li>
+    </ul>
+    <button id="btn">버튼</button>
+    <script>
+      // 1) 버튼을 클릭했을 때 banana요소의 배경색을 노란색으로 변경
+      const $lis = document.querySelectorAll('ul>li');
+      // const result = [...$lis].filter((ele) => {
+      //   return ele.textContent === 'banana';
+      // });
+      // result.forEach((ele) => {
+      //   ele.style.backgroundColor = 'yellow';
+      // });
+
+      // 실행문에 이어서 체인 걸어주기
+      btn.addEventListener('click', () => {
+        if (document.querySelector('.item2').style.backgroundColor == 'yellow') {
+          document.querySelector('.item2').style.backgroundColor = 'white';
+        } else {
+          [...$lis]
+            .filter((ele) => ele.textContent === 'banana')
+            .forEach((ele) => {
+              ele.style.backgroundColor = 'yellow';
+            });
+        }
+      });
+    </script>
+  </body>
+</html>
