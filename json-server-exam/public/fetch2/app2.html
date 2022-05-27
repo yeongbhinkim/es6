@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="ajax.js"></script>
+</head>
+
+<body>
+    <div id="register">
+        <form action="">
+            <p><label for="">아이디</label><input type="text" name="" id="id"></p>
+            <p><label for="">내용</label><input type="text" name="" id="content"></p>
+            <p><label for="">완료여부</label><input type="text" name="" id="completed"></p>
+            <button id="listBtn" type="button">목록</button>
+            <button id="saveBtn" type="button">등록</button>
+            <button id="updateBtn" type="button">수정</button>
+            <button id="delBtn" type="button">삭제</button>
+        </form>
+    </div>
+    <div id="list"></div>
+
+    <script>
+        const $list = document.getElementById('list');
+        const records = res => res
+            // .filter(ele => ele.completed === true)
+            .sort((ele1, ele2) => ele2.id - ele1.id)//내림차순
+            .map(ele => `<tr><td>${ele.id}</td><td>${ele.content}</td><td>${ele.completed}</td></tr>`)
+            .join('\n');
+        const wrapTable = res => `<table>${res}</table>`;
+        const getList = evt => {
+            httpReq.get('/todos')
+                .then(res => res.json())
+                .then(records)//.then(res=>records(res))
+                .then(wrapTable)//.then(res=>wrapTable(res))
+                .then(res => $list.innerHTML = res);
+        }
+        const addItem = evt => {
+            const data = { id: id.value, content: content.value, completed: completed.value };
+            httpReq.post('/todos', data)
+                .then(res => res.json())  //응답메세지(json포맷의 문자열을 json객체로 변환)
+                .then(res => {
+                    console.log(res);
+                    getList();
+                });
+        }
+        const updateItem = evt => {
+            const data = { id: id.value, content: content.value, completed: completed.value };
+            const url = `/todos/${data.id}`;
+            httpReq.put(url, data)
+                .then(res => res.json())  //응답메세지(json포맷의 문자열을 json객체로 변환)
+                .then(res => {
+                    console.log(res);
+                    getList();
+                });
+        }
+        const delItem = evt => {
+            const url = `/todos/${id.value}`;
+            httpReq.delete(url)
+                .then(res => res.json())  //응답메세지(json포맷의 문자열을 json객체로 변환)
+                .then(res => {
+                    console.log(res);
+                    getList();
+                });
+        }
+        //목록가져오기
+        getList();
+        //목록 클릭시
+        listBtn.addEventListener('click', getList);
+        //등록 클릭시
+        saveBtn.addEventListener('click', addItem);
+        //수정 클릭시
+        updateBtn.addEventListener('click', updateItem);
+        //삭제 클릭시
+        delBtn.addEventListener('click', delItem);
+    </script>
+</body>
+
+</html>

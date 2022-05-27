@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="ajax.js"></script>
+</head>
+
+<body>
+    <div id="list"></div>
+    <button id="listBtn">목록</button>
+
+    <script>
+        // const html = `<tr><td>${ele.id}</td><td><tr><td>${ele.content}</td></tr><tr><td>${ele.completed}</tr></td>`
+
+        // httpReq.get('/todos')
+        //     .then(res => res.json())
+        //     .then(res => {
+        //         res.data.forEach(item => {
+        //             let html = '';
+
+        //             html += `<p>`;
+        //             html += `상품ID:${item.id}, 상품:${item.content}, 상품수량:${item.complete}`;
+        //             html += `</p>`;
+        //         });
+        //        document.getElementById('list').innerHTML = html;
+        //     }
+
+
+        //         // console.log(ele)
+        //     );
+        //         // res.map(res =>html).join('\n')
+
+        listBtn.addEventListener('click',()=>{
+            httpReq.get('/todos')
+            .then(res => res.json())
+            .then(res => {
+                const $list = document.getElementById('list');
+
+                let html = '<table>';
+                html += res.map(ele=> `<tr><td>${ele.id}</td><td>${ele.content}</td><td>${ele.completed}</td></tr>`).join('\n');
+                html += '</table>';
+                $list.innerHTML = html;
+            });
+        });
+        
+
+
+
+
+    </script>
+</body>
+
+</html>

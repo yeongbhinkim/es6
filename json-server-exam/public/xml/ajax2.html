@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+       
+        //XMLHttpRequest()
+
+        //1) XMLHttpRequest객체 생성
+        const xhr = new XMLHttpRequest();
+
+        //2) http요청 초기화
+        xhr.open('POST', 'http://jsonplaceholder.typicode.com/todos');
+
+        //3) http요청 해더
+        xhr.setRequestHeader('content-type', 'application/json');
+
+        //4) http요청 전송
+        const data =
+         `{
+            "userId": 20,
+            "id": 200,
+            "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+            "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+        }`;
+
+        xhr.send(data);
+
+        xhr.addEventListener('load', () => {
+            if (xhr.status == 200) {
+                console.log(JSON.parse(xhr.response));
+            } else {
+                console.error('Error', xhr.status, xhr.statusText);
+            }
+        });
+    </script>
+</body>
+
+</html>

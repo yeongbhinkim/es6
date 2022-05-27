@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const promise = url => new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.send();
+            xhr.addEventListener('load', () => {
+                if (xhr.status === 200) {
+                // if (xhr.status !== 200) {
+                    resolve(JSON.parse(xhr.response));
+                } else {
+                    reject(new Error(xhr.status));
+                }
+            });
+        });
+
+        // promise('/todos/1')
+        //     .then(res => console.log(res))
+        //     .catch(err => console.log(err))
+        //     .finally(msg => console.log('처리완료!'));
+
+            promise('/todos/3')
+            .then(console.log)
+            .catch(console.log)
+            .finally(console.log);
+
+    </script>
+</body>
+
+</html>

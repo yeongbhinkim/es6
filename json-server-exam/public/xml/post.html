@@ -16,7 +16,7 @@
         const xhr = new XMLHttpRequest();
 
         //2) http요청 초기화
-        xhr.open('PUT', '/todos/4');
+        xhr.open('POST', '/todos');
 
         //3) http요청 header
         xhr.setRequestHeader('content-type', 'application/json');
@@ -24,7 +24,7 @@
         //4) http요청 전송
         const data =
         {
-            id: 4, content: 'React', completed: true
+            id: 5, content: 'VUE', completed: false
         };
 
 
@@ -32,7 +32,8 @@
 
         xhr.addEventListener('load', () => {
             if (xhr.status == 200) {
-                console.log(JSON.parse(xhr.response));
+                console.log(xhr.response);
+                 // console.log(JSON.parse(xhr.response));
             } else {
                 console.error('Error', xhr.status, xhr.statusText);
             }
